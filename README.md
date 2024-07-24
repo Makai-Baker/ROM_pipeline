@@ -1,0 +1,1 @@
+Pipeline to generate reduced order models for arbitary waveforms based on input ini files used for parameter estimation. Adaptive sampling routines and sophisticated training set discretisation procedures are implemented to improve the memory efficieny and accuracy of the resulting ROMs. 
