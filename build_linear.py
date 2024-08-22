@@ -46,8 +46,8 @@ degree = 'linear'
 lin_greedy = None 
     
 label = inputs.label
-#model = RombusModel.load('{}_model_{}:GWModel'.format(cbc_type,degree))
-model = RombusModel.load('model:GWModel')
+
+model = RombusModel.load('model:GWModel',ini_args, inputs, cbc_type, degree, ifo, set_params=True)
 
 if adapt_sampling:
     f_values = utils.down_sample(ini_args, df_max=1.)
@@ -71,8 +71,8 @@ samples.extend(random_samples)
 tol = 1e-12
 
 rom = ReducedOrderModel(model, samples).build(do_step=None, tol=tol)
-#for _ in range(n_refine):
-#    rom = rom.refine(n_random, iterate=False)
+for _ in range(n_refine):
+   rom = rom.refine(n_random, iterate=False)
 
 error_list = rom.reduced_basis.error_list
 plt.plot(error_list)
